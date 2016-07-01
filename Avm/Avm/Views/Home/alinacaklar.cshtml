@@ -1,0 +1,43 @@
+﻿@model List<Avm.Models.Satislar>
+@using Microsoft.AspNet.Identity
+@using Avm.Models
+@{
+    ViewBag.Title = "alinacaklar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    dbContext db = new dbContext();
+    Urunler eleman;
+}
+
+<h2>alinacaklar</h2>
+ 
+@using (Html.BeginForm("Delete", "Home", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+{
+<table class="table container">
+  
+    @{
+        foreach (var item in Model)
+        {
+             
+                eleman = db.Urunler.Find(item.urunid);
+
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(m => eleman.Urunadi)
+                    </th>
+                
+                    <th>
+                        <img class="img-responsive zoom-img" src="data:image/png;base64,@System.Convert.ToBase64String(eleman.UrunResim)" alt="" />
+                    </th>
+                </tr>
+                <tr>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                </td>
+                 </tr>
+            
+        }
+    
+}
+
+</table>
+        }

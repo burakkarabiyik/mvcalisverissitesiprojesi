@@ -1,0 +1,31 @@
+﻿@using Microsoft.AspNet.Identity
+@using Avm.Models
+ }
+@if (Request.IsAuthenticated)
+{
+
+    ApplicationDbContext db = new ApplicationDbContext();
+    var kisi = db.Users.Find(User.Identity.GetUserId());
+    using (Html.BeginForm(Resources.lang.LogOff, "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+        Session["kullaniciid"] = kisi.Id;
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            @Html.RouteLink(Resources.lang.Hello+"  " + kisi.Ad, "Manage", htmlAttributes: new { title = "Manage" })
+        </li>
+        <li>
+            @Html.RouteLink(Resources.lang.Order , "Alinacaklar",routeValues:null, htmlAttributes: new { title = "Manage" })
+        </li>
+
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+    </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.RouteLink(Resources.lang.Register, "Register",routeValues:null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.RouteLink(Resources.lang.Login, "Login", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

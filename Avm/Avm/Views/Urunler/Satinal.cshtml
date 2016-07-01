@@ -1,0 +1,150 @@
+﻿@model Avm.Models.Urunler
+
+@{ 
+    Avm.Models.dbContext db = new Avm.Models.dbContext();
+
+    Session["urunid"] = Model.Id;
+}
+<script type="text/javascript">
+	$(function() {
+
+	    var menu_ul = $('.menu_drop > li > ul'),
+	           menu_a  = $('.menu_drop > li > a');
+
+	    menu_ul.hide();
+
+	    menu_a.click(function(e) {
+	        e.preventDefault();
+	        if(!$(this).hasClass('active')) {
+	            menu_a.removeClass('active');
+	            menu_ul.filter(':visible').slideUp('normal');
+	            $(this).addClass('active').next().stop(true,true).slideDown('normal');
+	        } else {
+	            $(this).removeClass('active');
+	            $(this).next().stop(true,true).slideUp('normal');
+	        }
+	    });
+
+	});
+</script>	  
+
+ 
+@using (Html.BeginForm("Satinal", "Urunler", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="single contact">
+        <div class="container">
+            <div class="single-main">
+                <div class="col-md-9 single-main-left">
+                    <div class="sngl-top">
+                        <div class="col-md-5 single-top-left">
+                            <div class="flexslider">
+                                <ul class="slides">
+                                    <li data-thumb="~/images/s-1.jpg">
+                                        <div class="thumb-image">
+                                            <img style="width: 100%; height: auto;" src="data:image/png;base64,@System.Convert.ToBase64String(Model.UrunResim)" data-imagezoom="true" class="img-responsive" alt="" />
+                                        </div>
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <!-- FlexSlider -->
+                            <script src="~/js/imagezoom.js"></script>
+                            <script defer src="~/js/jquery.flexslider.js"></script>
+
+                        </div>
+                        <div class="col-md-7 single-top-right">
+                            <div class="single-para simpleCart_shelfItem">
+                                <h2>@Model.Urunadi</h2>
+                                <div class="star-on">
+
+
+                                    <div class="clearfix"> </div>
+                                </div>
+
+                                <h5 class="item_price">@Model.Fiyat TL</h5>
+                                <p>@Model.Aciklama2 </p>
+                                 
+
+                                 <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value=@Resources.lang.siparis class="btn btn-default " />
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="tabs">
+                        <ul class="menu_drop">
+                            <li class="item1">
+                                <a href="#"><img src="~/images/arrow.png" alt="">Açıklama</a>
+                                <ul>
+                                    <li class="subitem1"><a href="#">@Model.Aciklama </a></li>
+                                </ul>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                    <div class="latestproducts">
+                        <div class="product-one">
+                            <div class="col-md-4 product-left p-left">
+                                <div class="product-main simpleCart_shelfItem">
+                                    <a href="~/Urunler/Index/1" class="mask">
+                                        <img class="img-responsive zoom-img" src="data:image/png;base64,@System.Convert.ToBase64String(db.Urunler.Find(1).UrunResim)" alt="" />
+                                    </a>
+
+                                    <div class="product-bottom">
+                                        <h3>@db.Urunler.Find(1).Urunadi</h3>
+                                        <p>Explore Now</p>
+                                        <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">@db.Urunler.Find(1).Fiyat</span></h4>
+                                    </div>
+                                    <div class="srch">
+                                        <span>-@db.Urunler.Find(2).indirim %</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 product-left p-left">
+                                <div class="product-main simpleCart_shelfItem">
+                                    <a href="~/Urunler/Index/2" class="mask">
+                                        <img class="img-responsive zoom-img" src="data:image/png;base64,@System.Convert.ToBase64String(db.Urunler.Find(2).UrunResim)" alt="" />
+                                    </a>
+
+                                    <div class="product-bottom">
+                                        <h3>@db.Urunler.Find(2).Urunadi</h3>    
+                                        <p>Explore Now</p>
+                                        <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">@db.Urunler.Find(2).Fiyat Tl</span></h4>
+                                    </div>
+                                    <div class="srch">
+                                        <span>-@db.Urunler.Find(2).indirim %</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 product-left p-left">
+                                <div class="product-main simpleCart_shelfItem">
+                                    <a href="~/Urunler/Index/3" class="mask">
+                                        <img class="img-responsive zoom-img" src="data:image/png;base64,@System.Convert.ToBase64String(db.Urunler.Find(3).UrunResim)" alt="" />
+                                    </a>
+
+                                    <div class="product-bottom">
+                                        <h3>@db.Urunler.Find(3).Urunadi</h3>
+                                        <p>Explore Now</p>
+                                        <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">@db.Urunler.Find(3).Fiyat Tl</span></h4>
+                                    </div>
+                                    <div class="srch">
+                                        <span>-@db.Urunler.Find(3).indirim %</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}

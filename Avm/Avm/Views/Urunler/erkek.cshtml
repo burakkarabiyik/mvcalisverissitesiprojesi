@@ -1,0 +1,37 @@
+﻿@model List<Avm.Models.Urunler>
+<div class="prdt">
+    <div class="container"> 
+        <div class="prdt-top">
+            <div class="col-md-9 prdt-left">
+                <div class="product-one">
+                   @{
+
+                       foreach (var item in Model)
+                       {
+                        <div class="col-md-3 product-left p-left">
+                            <div class="product-main simpleCart_shelfItem">
+                                <a href="~/Urunler/Index/@item.Id " class="mask">
+                                    <img class="img-responsive zoom-img" src="data:image/png;base64,@System.Convert.ToBase64String(item.UrunResim)" alt="" />
+                                </a>  <div class="product-bottom">
+                                    <h3>@item.Urunadi</h3>
+                                    <p>Explore Now</p>
+                                    <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">@item.Fiyat Tl</span></h4>
+                                </div>
+                                <div class="srch srch1">
+                                    <span>-@item.indirim %</span>
+                                </div>
+                            </div>
+                        </div>
+                       }
+                }
+                     
+                    
+                    
+                    <div class="clearfix"></div>
+                </div>
+
+            </div> 
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
