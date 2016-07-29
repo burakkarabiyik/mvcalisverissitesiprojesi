@@ -35,12 +35,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="col-md-6 top-header-left">
                     <div class="drop">
                         
-                        <div class="box1">
-                             
-                               @Html.ActionLink("English", "ChangeCulture", "Home", new { lang = "en", returnurl = this.Request.RawUrl }, null) 
-                                @Html.ActionLink("Türkçe", "ChangeCulture", "Home", new { lang = "tr", returnUrl = this.Request.RawUrl }, null)
+                        <ul class="nav navbar-nav" style="height:30px">
+                             <li>
+                                 @Html.ActionLink("English", "ChangeCulture", "Home", new { lang = "en", returnurl = this.Request.RawUrl }, null) </li>
+                                <li>
+                                    @Html.ActionLink("Türkçe", "ChangeCulture", "Home", new { lang = "tr", returnUrl = this.Request.RawUrl }, null)
+                                </li>
                                  
-                        </div>
+                        </ul>
                         <div class="clearfix"></div>
                     </div>
                 </div>

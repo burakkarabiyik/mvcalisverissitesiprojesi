@@ -26,8 +26,7 @@
 	    });
 
 	});
-</script>	  
-
+</script>	 
  
 @using (Html.BeginForm("Satinal", "Urunler", FormMethod.Post))
 {
@@ -88,9 +87,10 @@
 
                         </ul>
                     </div>
-                    <div class="latestproducts">
+                    @*<div class="latestproducts">
                         <div class="product-one">
-                            <div class="col-md-4 product-left p-left">
+                       
+                                <div class="col-md-4 product-left p-left">
                                 <div class="product-main simpleCart_shelfItem">
                                     <a href="~/Urunler/Index/1" class="mask">
                                         <img class="img-responsive zoom-img" src="data:image/png;base64,@System.Convert.ToBase64String(db.Urunler.Find(1).UrunResim)" alt="" />
@@ -102,46 +102,16 @@
                                         <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">@db.Urunler.Find(1).Fiyat</span></h4>
                                     </div>
                                     <div class="srch">
-                                        <span>-@db.Urunler.Find(2).indirim %</span>
+                                        <span>-%</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4 product-left p-left">
-                                <div class="product-main simpleCart_shelfItem">
-                                    <a href="~/Urunler/Index/2" class="mask">
-                                        <img class="img-responsive zoom-img" src="data:image/png;base64,@System.Convert.ToBase64String(db.Urunler.Find(2).UrunResim)" alt="" />
-                                    </a>
-
-                                    <div class="product-bottom">
-                                        <h3>@db.Urunler.Find(2).Urunadi</h3>    
-                                        <p>Explore Now</p>
-                                        <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">@db.Urunler.Find(2).Fiyat Tl</span></h4>
-                                    </div>
-                                    <div class="srch">
-                                        <span>-@db.Urunler.Find(2).indirim %</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 product-left p-left">
-                                <div class="product-main simpleCart_shelfItem">
-                                    <a href="~/Urunler/Index/3" class="mask">
-                                        <img class="img-responsive zoom-img" src="data:image/png;base64,@System.Convert.ToBase64String(db.Urunler.Find(3).UrunResim)" alt="" />
-                                    </a>
-
-                                    <div class="product-bottom">
-                                        <h3>@db.Urunler.Find(3).Urunadi</h3>
-                                        <p>Explore Now</p>
-                                        <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">@db.Urunler.Find(3).Fiyat Tl</span></h4>
-                                    </div>
-                                    <div class="srch">
-                                        <span>-@db.Urunler.Find(3).indirim %</span>
-                                    </div>
-                                </div>
-                            </div>
+                         
+                   
 
                             <div class="clearfix"></div>
                         </div>
-                    </div>
+                    </div>*@
                 </div>
 
             </div>
